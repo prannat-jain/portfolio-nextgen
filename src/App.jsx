@@ -5,7 +5,6 @@ import Navbar from "./components/navbar/Navbar";
 import Parallax from "./components/parallax/Parallax";
 import Portfolio from "./components/portfolio/Portfolio";
 import Bio from "./components/bio/Bio";
-import Experience from "./components/experience/experience";
 
 const App = () => {
   return (
