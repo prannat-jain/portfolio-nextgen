@@ -6,7 +6,7 @@ const items = [
   {
     id: 1,
     title: "Ocean GenAI Hackathon",
-    img: "https://shiftkeylabs.ca/wp-content/uploads/2024/02/Post-2-instagram.png",
+    img: "genai-ocean.webp",
     date: "4-5th May 2024",
     desc: [
       "Our team used audio sounds of marine animals, created a machine learning model which assisted with the classification of species and tracking of their movements for various benefits to the industry.",
@@ -26,7 +26,7 @@ const items = [
   {
     id: 3,
     title: "ChemAR",
-    img: "https://images.pexels.com/photos/6894528/pexels-photo-6894528.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
+    img: "./chemar.png",
     date: "Sep 2023",
     desc: [
       "Developed an augmented reality powered program to support chemistry learning at Dalhousie University.",
@@ -57,7 +57,7 @@ const items = [
   {
     id: 6,
     title: "Social Media App",
-    img: "https://images.pexels.com/photos/18540208/pexels-photo-18540208/free-photo-of-wood-landscape-water-hill.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    img: "./social-media.png",
     date: "Dec 2022",
     desc: [
       "Worked on a full‑stack, RESTful social media app, with login, registration, and secure authorization.",
@@ -68,7 +68,7 @@ const items = [
   {
     id: 7,
     title: "Motorsports Telemetry Analysis",
-    img: "https://images.pexels.com/photos/18540208/pexels-photo-18540208/free-photo-of-wood-landscape-water-hill.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    img: "./race_strategy_russia.png",
     date: "May 2023",
     desc: [
       "Provides graphical representation and analysis of F1 car telemetry data in charts and line graphs.",
