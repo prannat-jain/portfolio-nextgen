@@ -2,12 +2,7 @@ import Sidebar from "../sidebar/Sidebar";
 import "./navbar.scss";
 import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faFacebook,
-  faInstagram,
-  faYoutube,
-  faDribbble,
-} from "@fortawesome/free-brands-svg-icons";
+import { faLinkedin, faGithub } from "@fortawesome/free-brands-svg-icons";
 
 const Navbar = () => {
   return (
@@ -16,17 +11,11 @@ const Navbar = () => {
       <Sidebar />
       <div className="wrapper">
         <div className="social">
-          <a href="#">
-            <FontAwesomeIcon icon={faFacebook} />
+          <a href="https://www.linkedin.com/in/prannat-jain">
+            <FontAwesomeIcon icon={faLinkedin} />
           </a>
-          <a href="#">
-            <FontAwesomeIcon icon={faInstagram} />
-          </a>
-          <a href="#">
-            <FontAwesomeIcon icon={faYoutube} />
-          </a>
-          <a href="#">
-            <FontAwesomeIcon icon={faDribbble} />
+          <a href="https://www.github.com/prannat-jain">
+            <FontAwesomeIcon icon={faGithub} />
           </a>
         </div>
       </div>
