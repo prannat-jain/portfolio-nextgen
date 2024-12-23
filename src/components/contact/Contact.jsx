@@ -49,7 +49,7 @@ const Contact = () => {
   return (
     <motion.div
       ref={ref}
-      className="contact" 
+      className="contact"
       variants={variants}
       initial="initial"
       whileInView="animate"
@@ -62,7 +62,7 @@ const Contact = () => {
         </motion.div>
         <motion.div className="item" variants={variants}>
           <h2>Address</h2>
-          <span>Hello street New York</span>
+          <span>Halifax, NS, Canada</span>
         </motion.div>
         <motion.div className="item" variants={variants}>
           <h2>Phone</h2>
