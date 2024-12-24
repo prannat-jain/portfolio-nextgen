@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import "./contact.scss";
 import { motion, useInView } from "framer-motion";
 import emailjs from "@emailjs/browser";
+import ReCAPTCHA from "react-google-recaptcha";
 
 const variants = {
   initial: {
@@ -23,20 +24,28 @@ const Contact = () => {
   const formRef = useRef();
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
+  const recaptcha = useRef();
 
   const isInView = useInView(ref, { margin: "-100px" });
 
   const sendEmail = (e) => {
     e.preventDefault();
 
-    emailjs
-      .sendForm(
-        "service_94y20xo",
-        "template_v10u2oh",
-        formRef.current,
-        "pX_2hasGmGcuvjXIW"
-      )
-      .then(
+    emailjs.init("wc-hk34CmxbRnDxuY");
+
+    const templateParams = {
+      from_name: formRef.current?.name.value,
+      from_email: formRef.current?.email.value,
+      message: formRef.current?.message.value,
+    };
+
+    const captchaValue = recaptcha.current.getValue();
+
+    console.log(captchaValue);
+    if (!captchaValue) {
+      alert("Please verify the reCAPTCHA!");
+    } else {
+      emailjs.send("service_60vnxhf", "template_aqeqbcd", templateParams).then(
         (result) => {
           setSuccess(true);
         },
@@ -44,6 +53,8 @@ const Contact = () => {
           setError(true);
         }
       );
+      alert("Form submission successful!");
+    }
   };
 
   return (
@@ -112,6 +123,7 @@ const Contact = () => {
           <button>Submit</button>
           {error && "Error"}
           {success && "Success"}
+          <ReCAPTCHA sitekey={import.meta.env.VITE_CAPTCHA_SITE_KEY} />
         </motion.form>
       </div>
     </motion.div>
