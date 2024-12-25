@@ -59,7 +59,7 @@ const Bio = () => {
           whileHover={{ background: "lightgray", color: "black" }}
         >
           <p>
-            I'm a passionate Computer Science student at Dalhousie University,
+            I am a passionate Computer Science student at Dalhousie University,
             with a diverse skill set spanning full stack development, DevOps
             engineering, and cutting-edge research.
           </p>

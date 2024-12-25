@@ -61,6 +61,7 @@
           @include mobile {
             bottom: 20vh;
             right: 5vh;
+            z-index: 2;
           }
         }
       }
