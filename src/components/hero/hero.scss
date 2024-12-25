@@ -50,14 +50,31 @@
           border-radius: 10px;
           background-color: transparent;
           color: white;
-          margin-right: 20px;
+          margin: auto;
           cursor: pointer;
           font-weight: 300;
+          position: absolute;
+          bottom: 20vh;
+          right: 20vh;
+          z-index: 2;
+
+          @include mobile {
+            bottom: 20vh;
+            right: 5vh;
+          }
         }
       }
 
       img {
         width: 50px;
+        position: absolute;
+        bottom: 22vh;
+        right: 40vh;
+
+        @include mobile {
+          bottom: 22vh;
+          right: 25vh;
+        }
       }
     }
   }
@@ -85,7 +102,7 @@
   .slidingTextContainer {
     position: absolute;
     font-size: 50vh;
-    bottom: -120px;
+    bottom: -80px;
     white-space: nowrap;
     color: #ffffff09;
     width: 50%;

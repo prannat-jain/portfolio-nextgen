@@ -52,15 +52,23 @@ const Hero = () => {
             Computer Science student and Software Developer
           </motion.h1>
           <motion.div variants={textVariants} className="buttons">
-            <motion.button variants={textVariants}></motion.button>
-            <motion.button variants={textVariants}>Contact Me</motion.button>
+            <motion.button
+              variants={textVariants}
+              onClick={() => {
+                document.getElementById("contact").scrollIntoView({
+                  behavior: "smooth",
+                });
+              }}
+            >
+              Contact Me
+            </motion.button>
+            <motion.img
+              variants={textVariants}
+              animate="scrollButton"
+              src="/scroll.png"
+              alt=""
+            />
           </motion.div>
-          <motion.img
-            variants={textVariants}
-            animate="scrollButton"
-            src="/scroll.png"
-            alt=""
-          />
         </motion.div>
       </div>
       <motion.div
@@ -71,9 +79,6 @@ const Hero = () => {
       >
         Computer Science Research Full Stack Cloud
       </motion.div>
-      <div className="imageContainer">
-        {/* <img src="/hero.png" alt="" /> */}
-      </div>
     </div>
   );
 };
