@@ -46,7 +46,7 @@ const items = [
   {
     id: 5,
     title: "Android TradeTrove Application",
-    img: "https://images.pexels.com/photos/18540208/pexels-photo-18540208/free-photo-of-wood-landscape-water-hill.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    img: "./tradetrove.png",
     date: "Jan 2023",
     desc: [
       "Mobile App that allows one to find people in the local area who are interested to exchange their used goods.",
