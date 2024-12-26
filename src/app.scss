@@ -30,6 +30,7 @@ section {
 @mixin mobile {
   @media (max-width: 738px) {
     @content;
+    scroll-snap-type: none;
   }
 }
 @mixin tablet {
