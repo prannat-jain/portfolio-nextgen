@@ -36,7 +36,7 @@ const items = [
   {
     id: 4,
     title: "ScrapRadar",
-    img: "https://images.pexels.com/photos/18540208/pexels-photo-18540208/free-photo-of-wood-landscape-water-hill.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    img: "./ScrapRadar.png",
     date: "May 2023",
     desc: [
       "Created a web service where consumers and businesses can buy valuable scrap, by‑products, and waste materials.",
