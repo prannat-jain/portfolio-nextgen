@@ -31,7 +31,7 @@ section {
   overflow: hidden;
 
   @media (max-width: 738px) {
-    scroll-snap-type: none;
+    scroll-snap-align: none;
   }
 }
 
