@@ -1,6 +1,10 @@
 html {
   scroll-snap-type: y proximity;
   scroll-behavior: smooth;
+
+  @media (max-width: 738px) {
+    scroll-snap-type: none;
+  }
 }
 
 * {
@@ -30,7 +34,6 @@ section {
 @mixin mobile {
   @media (max-width: 738px) {
     @content;
-    scroll-snap-type: none;
   }
 }
 @mixin tablet {
