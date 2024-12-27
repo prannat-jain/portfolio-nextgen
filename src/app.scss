@@ -29,6 +29,10 @@ section {
   width: 100vw;
   scroll-snap-align: center;
   overflow: hidden;
+
+  @media (max-width: 738px) {
+    scroll-snap-type: none;
+  }
 }
 
 @mixin mobile {
