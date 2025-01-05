@@ -1,10 +1,36 @@
-import { useRef } from "react";
+import { useState, useRef } from "react";
 import "./portfolio.scss";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+import ProjectDetails from "../projectdetails/ProjectDetails";
+import Modal from "../modal/Modal";
 
 const items = [
   {
     id: 1,
+    title: "Course Enrolment Predictor",
+    img: "course-predictor.png",
+    date: "Dec 2024",
+    desc: [
+      "Developed an ML-driven course recommendation system, feature engineering, model training, and front-end deployment.",
+      "Implemented multiple predictive models (Linear Regression, Logistic Regression, KNN) to estimate final grades, pass probabilities, and nearest neighbor comparisons.",
+      "Developed a Streamlit-based user interface enabling real-time predictions and a polished user experience, featuring dynamic forms, interactive sliders, and results dashboards.",
+    ],
+    award: "",
+  },
+  {
+    id: 2,
+    title: "Optimal Study Group Maker",
+    img: "study-group-finder.png",
+    date: "Dec 2024",
+    desc: [
+      "The app enables students to create, join, and manage study groups, with a user-friendly interface.",
+      "Developed a machine learning pipeline (K-Means + sub-clustering) to group students based on availability, GPA, and subject preferences, ensuring no cluster exceeded five members.",
+      "Integrated a SQLite database for persistent storage of student data, managing concurrency and data retrieval in real-time.",
+    ],
+    award: "Placed 3rd in the competition",
+  },
+  {
+    id: 3,
     title: "Ocean GenAI Hackathon",
     img: "genai-ocean.webp",
     date: "4-5th May 2024",
@@ -14,7 +40,7 @@ const items = [
     award: "Placed 3rd in the competition",
   },
   {
-    id: 2,
+    id: 4,
     title: "AI Object Recognition and Motion Tracking",
     img: "https://images.pexels.com/photos/18023772/pexels-photo-18023772/free-photo-of-close-up-of-a-person-holding-a-wristwatch.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
     date: "Jan 2024",
@@ -24,7 +50,7 @@ const items = [
     ],
   },
   {
-    id: 3,
+    id: 5,
     title: "ChemAR",
     img: "./chemar.png",
     date: "Sep 2023",
@@ -34,7 +60,7 @@ const items = [
     ],
   },
   {
-    id: 4,
+    id: 6,
     title: "ScrapRadar",
     img: "./ScrapRadar.png",
     date: "May 2023",
@@ -44,7 +70,7 @@ const items = [
     ],
   },
   {
-    id: 5,
+    id: 7,
     title: "Android TradeTrove Application",
     img: "./tradetrove.png",
     date: "Jan 2023",
@@ -55,7 +81,7 @@ const items = [
     ],
   },
   {
-    id: 6,
+    id: 8,
     title: "Social Media App",
     img: "./social-media.png",
     date: "Dec 2022",
@@ -66,7 +92,7 @@ const items = [
     ],
   },
   {
-    id: 7,
+    id: 9,
     title: "Motorsports Telemetry Analysis",
     img: "./race_strategy_russia.png",
     date: "May 2023",
@@ -79,12 +105,22 @@ const items = [
 
 const Single = ({ item }) => {
   const ref = useRef();
+  const [showModal, setShowModal] = useState(false);
 
   const { scrollYProgress } = useScroll({
     target: ref,
   });
 
   const y = useTransform(scrollYProgress, [0, 1], [-300, 300]);
+
+  const openProjectDetails = () => {
+    // Trigger the modal to open
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
 
   return (
     <section>
@@ -95,11 +131,19 @@ const Single = ({ item }) => {
           </div>
           <motion.div className="textContainer" style={{ y }}>
             <h2>{item.title}</h2>
+            <p>{item.date}</p>
             <p>{item.desc}</p>
-            <button>See Demo</button>
+            <p>{item.award}</p>
+            <button onClick={openProjectDetails}>See More</button>
           </motion.div>
         </div>
       </div>
+
+      {/* Modal is rendered here if showModal is true */}
+      <Modal isOpen={showModal} onClose={closeModal}>
+        {/* The content you want in the modal. You can pass the entire ProjectDetails or a summary. */}
+        <ProjectDetails item={item} />
+      </Modal>
     </section>
   );
 };
