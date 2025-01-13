@@ -3,52 +3,34 @@
 .projectdetails {
   position: relative;
 
-  .progress {
-    position: sticky;
-    top: 0;
-    left: 0;
-    padding-top: 50px;
-    text-align: center;
-    color: orange;
-    font-size: 24px;
-
-    @include mobile {
-      padding-top: calc(100vh - 100px);
-      font-size: 12px;
-    }
-
-    .progressBar {
-      height: 5px;
-      background-color: white;
-    }
-  }
-
   .container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
+    /* Create two columns for the image on the left and text on the right */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 95vw;
+    height: 40vw;
+    overflow: visible;
+
+    /* On mobile, stack them in one column */
+    @include mobile {
+      grid-template-columns: 1fr;
+      height: auto; /* Adjust height if needed for mobile */
+    }
 
     .wrapper {
-      max-width: 1366px;
-      height: 100%;
-      margin: auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 50px;
-
-      @include mobile {
-        flex-direction: column;
-      }
+      /* You can use display: contents here or simply rely on the container’s grid */
+      /* display: contents; */
 
       .imageContainer {
-        flex: 1;
-        height: 50%;
+        /* Put the image in the left column */
+        grid-column: 1 / 2;
+        display: grid;
+        object-fit: contain;
+        align-self: baseline;
 
+        /* Mobile adjustments */
         @include mobile {
+          grid-column: 1 / 1; /* Stacks on top */
           width: 100%;
           max-height: 300px;
         }
@@ -65,20 +47,21 @@
       }
 
       .textContainer {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        gap: 30px;
+        /* Put text in the right column */
+        grid-column: 2 / 3;
+        margin-top: 15rem;
+        padding-top: 2rem;
 
         @include mobile {
+          /* On mobile, stack below the image */
+          grid-column: 1 / 1;
+          margin-top: 20px;
           transform: none !important;
           padding: 10px;
-          align-items: center;
-          text-align: center;
         }
 
         h2 {
-          font-size: 60px;
+          font-size: 30px;
 
           @include mobile {
             font-size: 36px;
@@ -86,7 +69,7 @@
         }
 
         p {
-          color: gray;
+          color: rgb(0, 0, 0);
           font-size: 20px;
 
           @include mobile {

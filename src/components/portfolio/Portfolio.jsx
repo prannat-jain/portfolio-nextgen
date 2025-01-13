@@ -139,9 +139,7 @@ const Single = ({ item }) => {
         </div>
       </div>
 
-      {/* Modal is rendered here if showModal is true */}
       <Modal isOpen={showModal} onClose={closeModal}>
-        {/* The content you want in the modal. You can pass the entire ProjectDetails or a summary. */}
         <ProjectDetails item={item} />
       </Modal>
     </section>
