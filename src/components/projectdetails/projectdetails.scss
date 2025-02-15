@@ -49,8 +49,9 @@
       .textContainer {
         /* Put text in the right column */
         grid-column: 2 / 3;
-        margin-top: 15rem;
-        padding-top: 2rem;
+        margin-top: 20rem;
+        padding-top: 1rem;
+        padding-left: 5rem;
 
         @include mobile {
           /* On mobile, stack below the image */

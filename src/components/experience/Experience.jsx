@@ -1,10 +1,12 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import "./experience.scss";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+import Modal from "../modal/Modal";
+import ProjectDetails from "../projectdetails/ProjectDetails";
 
 const items = [
   {
-    id: 1,
+    id: 21,
     position: "Software Developer",
     img: "/nasdaq-logo.avif",
     company: "Nasdaq",
@@ -14,9 +16,10 @@ const items = [
       "Utilizing object-oriented programming and clean code principles to ensure high-quality software development.",
       "Developing proficiency in Amazon Web Services (AWS), database technologies (PostgreSQL), and big data technologies",
     ],
+    type: "Experience",
   },
   {
-    id: 2,
+    id: 22,
     position: "Research Assistant",
     img: "/dal-logo.png",
     company: "Dalhousie University",
@@ -26,9 +29,10 @@ const items = [
       "Creating dashboards using React.js, Node.js, and MongoDB for data presentation and analysis.",
       "Working on creating an encryption apparatus for data using asymmetric and symmetric public and private keys.",
     ],
+    type: "Experience",
   },
   {
-    id: 3,
+    id: 23,
     position: "Teaching Assistant and Marker",
     img: "/dal-logo.png",
     company: "Dalhousie University",
@@ -38,9 +42,10 @@ const items = [
       "Graded assignments and provided feedback to students to help them improve their programming skills.",
       "Held office hours and provided one-on-one assistance to students who needed help with course material.",
     ],
+    type: "Experience",
   },
   {
-    id: 4,
+    id: 24,
     position: "Research Aide",
     img: "/nshealth-logo.avif",
     company: "NS Health",
@@ -50,9 +55,10 @@ const items = [
       "Performed data analysis with Python, R, and data visualization in Tableau and Power BI to enhance reporting insights.",
       "Created a data analysis dashboard to enhance reporting insights using node.js platform and javascript.",
     ],
+    type: "Experience",
   },
   {
-    id: 5,
+    id: 25,
     position: "DevOps Engineer",
     img: "/pzero-logo.png",
     company: "Point Zero Solutions",
@@ -63,17 +69,27 @@ const items = [
       "Wrote unit tests for REST APIs and functions using PyTest, Junit.",
       "Setup for continuous integration and delivery on Docker and Google Cloud Run.",
     ],
+    type: "Experience",
   },
 ];
 
 const Single = ({ item }) => {
   const ref = useRef();
+  const [showModal, setShowModal] = useState(false);
 
   const { scrollYProgress } = useScroll({
     target: ref,
   });
 
   const y = useTransform(scrollYProgress, [0, 1], [-300, 300]);
+  const openProjectDetails = () => {
+    // Trigger the modal to open
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
 
   return (
     <section>
@@ -91,10 +107,13 @@ const Single = ({ item }) => {
                 <li key={index}>{item}</li>
               ))}
             </ul>
-            {/* <button>See Demo</button> */}
+            <button onClick={openProjectDetails}>See More</button>
           </motion.div>
         </div>
       </div>
+      <Modal isOpen={showModal} onClose={closeModal}>
+        <ProjectDetails item={item} />
+      </Modal>
     </section>
   );
 };

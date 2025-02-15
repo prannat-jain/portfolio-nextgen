@@ -16,6 +16,7 @@ const items = [
       "Developed a Streamlit-based user interface enabling real-time predictions and a polished user experience, featuring dynamic forms, interactive sliders, and results dashboards.",
     ],
     award: "",
+    type: "Project",
   },
   {
     id: 2,
@@ -28,6 +29,7 @@ const items = [
       "Integrated a SQLite database for persistent storage of student data, managing concurrency and data retrieval in real-time.",
     ],
     award: "Placed 3rd in the competition",
+    type: "Project",
   },
   {
     id: 3,
@@ -38,6 +40,7 @@ const items = [
       "Our team used audio sounds of marine animals, created a machine learning model which assisted with the classification of species and tracking of their movements for various benefits to the industry.",
     ],
     award: "Placed 3rd in the competition",
+    type: "Project",
   },
   {
     id: 4,
@@ -48,6 +51,8 @@ const items = [
       "Developed an AI application which identifies and tracks multiple objects in a video/image.",
       "Uses DeepSort algorithm to individually track numerous objects moving in the frame.",
     ],
+    award: "",
+    type: "Project",
   },
   {
     id: 5,
@@ -58,6 +63,8 @@ const items = [
       "Developed an augmented reality powered program to support chemistry learning at Dalhousie University.",
       "Practiced Agile/Scrum and designed custom APIs using node.js to perform interactive molecule lookup using QR codes.",
     ],
+    award: "",
+    type: "Project",
   },
   {
     id: 6,
@@ -68,6 +75,8 @@ const items = [
       "Created a web service where consumers and businesses can buy valuable scrap, by‑products, and waste materials.",
       "Hosted on AWS EC2 with NGINX proxy and Node.js.",
     ],
+    award: "",
+    type: "Project",
   },
   {
     id: 7,
@@ -79,6 +88,8 @@ const items = [
       "Hosted on Firebase, with Google Maps integration.",
       "Built in android studio and exported signed APK for use.",
     ],
+    award: "",
+    type: "Project",
   },
   {
     id: 8,
@@ -90,6 +101,8 @@ const items = [
       "Implemented bcrypt librarylibrary which enables password encryption for safe storage in MongoDB.",
       "Backend hosted on MongoDB, and Frontend built on React.js, client and server deployed on render.com.",
     ],
+    award: "",
+    type: "Project",
   },
   {
     id: 9,
@@ -100,6 +113,8 @@ const items = [
       "Provides graphical representation and analysis of F1 car telemetry data in charts and line graphs.",
       "Uses open source APIs as per query in Python using matplotlib and fastf1 libraries.",
     ],
+    award: "",
+    type: "Project",
   },
 ];
 
