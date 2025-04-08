@@ -107,7 +107,7 @@ const Single = ({ item }) => {
                 <li key={index}>{item}</li>
               ))}
             </ul>
-            <button onClick={openProjectDetails}>See More</button>
+            {/* <button onClick={openProjectDetails}>See More</button> */}
           </motion.div>
         </div>
       </div>
