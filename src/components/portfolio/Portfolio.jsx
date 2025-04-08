@@ -149,7 +149,7 @@ const Single = ({ item }) => {
             <p>{item.date}</p>
             <p>{item.desc}</p>
             <p>{item.award}</p>
-            {/*  <button onClick={openProjectDetails}>See More</button> */}
+            <button onClick={openProjectDetails}>See More</button>
           </motion.div>
         </div>
       </div>
