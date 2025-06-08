@@ -4,11 +4,48 @@ import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import ProjectDetails from "../projectdetails/ProjectDetails";
 import Modal from "../modal/Modal";
 
+const ImageSlideshow = ({ images }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const nextSlide = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === images.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? images.length - 1 : prevIndex - 1
+    );
+  };
+
+  return (
+    <div className="slideshow">
+      <button className="nav-button prev" onClick={prevSlide}>
+        ❮
+      </button>
+      <img src={images[currentIndex]} alt="" />
+      <button className="nav-button next" onClick={nextSlide}>
+        ❯
+      </button>
+      <div className="dots">
+        {images.map((_, index) => (
+          <span
+            key={index}
+            className={`dot ${index === currentIndex ? "active" : ""}`}
+            onClick={() => setCurrentIndex(index)}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
 const items = [
   {
     id: 1,
     title: "Course Enrolment Predictor",
-    img: "course-predictor.png",
+    images: ["course-predictor.png"],
     date: "Dec 2024",
     desc: [
       "Developed an ML-driven course recommendation system, feature engineering, model training, and front-end deployment.",
@@ -21,7 +58,7 @@ const items = [
   {
     id: 2,
     title: "Optimal Study Group Maker",
-    img: "study-group-finder.png",
+    images: ["study-group-finder.png"],
     date: "Dec 2024",
     desc: [
       "The app enables students to create, join, and manage study groups, with a user-friendly interface.",
@@ -34,7 +71,7 @@ const items = [
   {
     id: 3,
     title: "Ocean GenAI Hackathon",
-    img: "genai-ocean.webp",
+    images: ["genai-ocean.webp"],
     date: "4-5th May 2024",
     desc: [
       "Our team used audio sounds of marine animals, created a machine learning model which assisted with the classification of species and tracking of their movements for various benefits to the industry.",
@@ -45,7 +82,9 @@ const items = [
   {
     id: 4,
     title: "AI Object Recognition and Motion Tracking",
-    img: "https://images.pexels.com/photos/18023772/pexels-photo-18023772/free-photo-of-close-up-of-a-person-holding-a-wristwatch.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
+    images: [
+      "https://images.pexels.com/photos/18023772/pexels-photo-18023772/free-photo-of-close-up-of-a-person-holding-a-wristwatch.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
+    ],
     date: "Jan 2024",
     desc: [
       "Developed an AI application which identifies and tracks multiple objects in a video/image.",
@@ -57,7 +96,11 @@ const items = [
   {
     id: 5,
     title: "ChemAR",
-    img: "./chemar.png",
+    images: [
+      "./chemar.png",
+      "./ChemAR-molecules.png",
+      "./chemAR-moleculeViewer.png",
+    ],
     date: "Sep 2023",
     desc: [
       "Developed an augmented reality powered program to support chemistry learning at Dalhousie University.",
@@ -69,7 +112,7 @@ const items = [
   {
     id: 6,
     title: "ScrapRadar",
-    img: "./ScrapRadar.png",
+    images: ["./ScrapRadar.png"],
     date: "May 2023",
     desc: [
       "Created a web service where consumers and businesses can buy valuable scrap, by‑products, and waste materials.",
@@ -81,7 +124,7 @@ const items = [
   {
     id: 7,
     title: "Android TradeTrove Application",
-    img: "./tradetrove.png",
+    images: ["./tradetrove.png"],
     date: "Jan 2023",
     desc: [
       "Mobile App that allows one to find people in the local area who are interested to exchange their used goods.",
@@ -94,7 +137,7 @@ const items = [
   {
     id: 8,
     title: "Social Media App",
-    img: "./social-media.png",
+    images: ["./social-media.png"],
     date: "Dec 2022",
     desc: [
       "Worked on a full‑stack, RESTful social media app, with login, registration, and secure authorization.",
@@ -107,7 +150,7 @@ const items = [
   {
     id: 9,
     title: "Motorsports Telemetry Analysis",
-    img: "./race_strategy_russia.png",
+    images: ["./race_strategy_russia.png"],
     date: "May 2023",
     desc: [
       "Provides graphical representation and analysis of F1 car telemetry data in charts and line graphs.",
@@ -129,7 +172,6 @@ const Single = ({ item }) => {
   const y = useTransform(scrollYProgress, [0, 1], [-300, 300]);
 
   const openProjectDetails = () => {
-    // Trigger the modal to open
     setShowModal(true);
   };
 
@@ -142,14 +184,13 @@ const Single = ({ item }) => {
       <div className="container">
         <div className="wrapper">
           <div className="imageContainer" ref={ref}>
-            <img src={item.img} alt="" />
+            <ImageSlideshow images={item.images} />
           </div>
           <motion.div className="textContainer" style={{ y }}>
             <h2>{item.title}</h2>
             <p>{item.date}</p>
             <p>{item.desc}</p>
             <p>{item.award}</p>
-            {/*  <button onClick={openProjectDetails}>See More</button> */}
           </motion.div>
         </div>
       </div>
