@@ -43,7 +43,20 @@ const ImageSlideshow = ({ images }) => {
 
 const items = [
   {
-    id: 1,
+    id: 10,
+    title: "Pocket Trader app",
+    images: ["pocket-trader.png"],
+    date: "Feb 2025",
+    desc: [
+      "Created a one-stop-shop for stock market guidance, that rids you of financial jargon and gives you context behind company financials",
+      "Refactored backend into a FastAPI micro-service deployed on Azure App Service with MLflow-tracked models and GitHub Actions CI.",
+    ],
+    award: "",
+    type: "Project",
+    link: "https://www.pocket-trader-app.com",
+  },
+  {
+    id: 9,
     title: "Course Enrolment Predictor",
     images: ["course-predictor.png"],
     date: "Dec 2024",
@@ -54,9 +67,10 @@ const items = [
     ],
     award: "",
     type: "Project",
+    link: "https://enroll.prannat.one",
   },
   {
-    id: 2,
+    id: 8,
     title: "Optimal Study Group Maker",
     images: ["study-group-finder.png"],
     date: "Dec 2024",
@@ -67,9 +81,10 @@ const items = [
     ],
     award: "Placed 3rd in the competition",
     type: "Project",
+    link: "https://studygroups.prannat.one",
   },
   {
-    id: 3,
+    id: 7,
     title: "Ocean GenAI Hackathon",
     images: ["genai-ocean.webp"],
     date: "4-5th May 2024",
@@ -80,7 +95,7 @@ const items = [
     type: "Project",
   },
   {
-    id: 4,
+    id: 6,
     title: "AI Object Recognition and Motion Tracking",
     images: [
       "https://images.pexels.com/photos/18023772/pexels-photo-18023772/free-photo-of-close-up-of-a-person-holding-a-wristwatch.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
@@ -110,7 +125,7 @@ const items = [
     type: "Project",
   },
   {
-    id: 6,
+    id: 4,
     title: "ScrapRadar",
     images: ["./ScrapRadar.png"],
     date: "May 2023",
@@ -122,7 +137,19 @@ const items = [
     type: "Project",
   },
   {
-    id: 7,
+    id: 3,
+    title: "Motorsports Telemetry Analysis",
+    images: ["./race_strategy_russia.png"],
+    date: "May 2023",
+    desc: [
+      "Provides graphical representation and analysis of F1 car telemetry data in charts and line graphs.",
+      "Uses open source APIs as per query in Python using matplotlib and fastf1 libraries.",
+    ],
+    award: "",
+    type: "Project",
+  },
+  {
+    id: 2,
     title: "Android TradeTrove Application",
     images: ["./tradetrove.png"],
     date: "Jan 2023",
@@ -135,7 +162,7 @@ const items = [
     type: "Project",
   },
   {
-    id: 8,
+    id: 1,
     title: "Social Media App",
     images: ["./social-media.png"],
     date: "Dec 2022",
@@ -143,18 +170,6 @@ const items = [
       "Worked on a full‑stack, RESTful social media app, with login, registration, and secure authorization.",
       "Implemented bcrypt librarylibrary which enables password encryption for safe storage in MongoDB.",
       "Backend hosted on MongoDB, and Frontend built on React.js, client and server deployed on render.com.",
-    ],
-    award: "",
-    type: "Project",
-  },
-  {
-    id: 9,
-    title: "Motorsports Telemetry Analysis",
-    images: ["./race_strategy_russia.png"],
-    date: "May 2023",
-    desc: [
-      "Provides graphical representation and analysis of F1 car telemetry data in charts and line graphs.",
-      "Uses open source APIs as per query in Python using matplotlib and fastf1 libraries.",
     ],
     award: "",
     type: "Project",
@@ -191,6 +206,16 @@ const Single = ({ item }) => {
             <p>{item.date}</p>
             <p>{item.desc}</p>
             <p>{item.award}</p>
+            {item.link && (
+              <a
+                href={item.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="project-link"
+              >
+                View Project
+              </a>
+            )}
           </motion.div>
         </div>
       </div>
@@ -215,13 +240,16 @@ const Portfolio = () => {
     damping: 30,
   });
 
+  // Sort items by id in descending order so newest projects appear first
+  const sortedItems = [...items].sort((a, b) => b.id - a.id);
+
   return (
     <div className="portfolio" ref={ref}>
       <div className="progress">
         <h1>Projects and Achievements</h1>
         <motion.div style={{ scaleX }} className="progressBar"></motion.div>
       </div>
-      {items.map((item) => (
+      {sortedItems.map((item) => (
         <Single item={item} key={item.id} />
       ))}
     </div>
